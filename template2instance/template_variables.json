@@ -1,0 +1,51 @@
+{
+    "variables": [
+        {
+            "name": "PROJECT_NAME",
+            "type": "string",
+            "description": "Name of the project",
+            "value_example": "my_project",
+            "access": "user input"
+        },
+        {
+            "name": "PROJECT_TITLE_EN",
+            "type": "string",
+            "description": "Title of the documentation",
+            "value_example": "Documentation of project xxx",
+            "access": "user input"
+        },
+        {
+            "name": "AUTHOR_NAMES",
+            "type": "string",
+            "description": "List of authors of the project, separated by commas. Best practice is to use the format 'Firstname LASTNAME' with last name in uppercase",
+            "value_example": "Jane SMITH, John DOE",
+            "access": "user input"
+        },
+        {
+            "name": "PROJECT_RELEASE",
+            "type": "string",
+            "validation": "semver",
+            "description": "Version of the package in semantic versioning",
+            "value_example": "0.0.1-stable",
+            "access": "user input"
+        },
+        {
+            "name": "PROJECT_LANGUAGE",
+            "type": "string",
+            "validation": "language_codes",
+            "description": "The language code of the project documentation, for a list of supported codes see https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language",
+            "value_example": "es",
+            "default": "en",
+            "access": "user input"
+        },
+        {
+            "name": "YEAR",
+            "type": "int",
+            "description": "Year of the creation",
+            "function": "current_year",
+            "value_example": 2023,
+            "access": "function"
+        }
+    ],
+    "find template file method": "TEMPLATE_BEFORE_SUFFIX_OR_ENDS_WITH_TEMPLATE_SUFFIX"
+}

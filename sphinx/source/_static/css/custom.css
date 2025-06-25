@@ -1,0 +1,184 @@
+/* Force line wraping in code instead of horizontal scrolling */
+pre {
+    white-space: pre-wrap !important;
+    word-break: break-all;
+}
+
+/* Add the possibility to underline text */
+.underline {
+    text-decoration: underline;
+}
+
+/* This allows the content to use most of the screen */
+@media (min-width: 1000px) {
+    .wy-nav-content {
+        max-width: 95%;
+        margin: 0;
+        /* This allows the content to use most of the screen */
+    }
+}
+
+
+/* Force sidebar to collapse at 1000px instead of 768px */
+@media screen and (max-width: 1000px) {
+
+    /* Force the sidebar to be hidden */
+    .wy-nav-side {
+        display: none;
+    }
+
+    /* Force the top navigation bar to be displayed */
+    .wy-nav-side.shift {
+        display: block !important;
+    }
+
+    /* Force the top navigation bar to be displayed */
+    .wy-nav-top {
+        display: block !important;
+    }
+
+    /* Make content use all the remaining space of the screen */
+    .wy-nav-content-wrap {
+        margin-left: 0;
+    }
+
+    .wy-nav-content {
+        margin: 0;
+        max-width: 95%;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+
+    /* Force the grid container (usually the .sd-row element) to use one column */
+    .one-col-below-1250 .sd-row,
+    .one-col-below-1250 .sd-row.sd-row-cols-md-2,
+    .one-col-below-1250 .sd-row.sd-row-cols-lg-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Ensure each grid item (.sd-col) occupies full width */
+    .one-col-below-1250 .sd-col {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    /* Force the grid container (usually the .sd-row element) to use one column */
+    .one-col-below-1000 .sd-row,
+    .one-col-below-1000 .sd-row.sd-row-cols-md-2,
+    .one-col-below-1000 .sd-row.sd-row-cols-lg-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Ensure each grid item (.sd-col) occupies full width */
+    .one-col-below-1000 .sd-col {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* This allows the content to be centered */
+.center-text {
+    text-align: center;
+}
+
+/** Allow caption from toctree to wrap nicely in sidebar */
+.wy-menu .caption-text {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.1;
+    /* Increase line height to prevent overlap */
+    display: block;
+    /* Ensure the element takes up full width */
+}
+
+/** Exercise and solution styling */
+button.toggle-button {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    /*< Make the text bold */
+}
+
+/* Change the color and background of the header/title portion */
+.admonition.exercise>.admonition-title {
+    background-color: #ffd400;
+    color: #333;
+    /* text color */
+    padding: 0.3em 0.5em;
+    margin: -1em -1em 1em;
+    /* adjust spacing to compensate for padding */
+}
+
+.admonition.solution {
+    /* e.g. light yellow background */
+    background-color: #fff9d9;
+    border-left: 4px solid #43d300;
+    /* a bright green border */
+    padding: 1em;
+}
+
+.admonition.solution>.admonition-title {
+    background-color: #43d300;
+    color: #333;
+    /* text color */
+    padding: 0.3em 0.5em;
+    margin: -1em -1em 1em;
+    /* adjust spacing to compensate for padding */
+}
+
+div.exercise p.admonition-title::after {
+    content: "";
+}
+
+div.exercise p.admonition-title::before {
+    content: "✎";
+    /*content: "✍"; */
+    font-weight: bold;
+    font-size: 200%;
+}
+
+div.solution p.admonition-title::before {
+    /* content: "💡"; */
+    content: "★";
+    font-weight: bold;
+    font-size: 200%;
+}
+
+/* Style the tab list like Chrome browser tabs */
+.sd-tab-set>input:checked+label {
+    background: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    color: black;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.sd-tab-set>label {
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    margin-right: 4px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    top: 1px;
+    z-index: 1;
+}
+
+.sd-tab-set>.sd-tab-content {
+    border: 1px solid #ccc;
+    padding: 1em;
+    border-radius: 0 8px 8px 8px;
+    background: white;
+    margin-top: -1px;
+    /* avoid gap between tab and content */
+}
