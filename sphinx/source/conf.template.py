@@ -97,11 +97,11 @@ from pathlib import Path
 import shutil
 
 html_context = {
-  'current_version' : "humble",
+  'current_version' : "%(%(VERSION_NAME)s)s",
   'current_language' : None,
   'current_language_code' : None,
   'versions' : [
-      ["humble", None], 
+      ["%(%(VERSION_NAME)s)s", None], 
       #["jazzy", None]
     ],
   'languages': [
@@ -138,7 +138,7 @@ language_map = {
 
 base_uri = None
 config_params = None
-version = "humble"
+version = "%(%(VERSION_NAME)s)s"
 
 def on_builder_inited(app):
     global base_uri

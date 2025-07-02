@@ -7,14 +7,14 @@ Quick install and test setup
    python3 -m venv .venv
    source .venv/bin/activate
    python -m pip install -r requirements.txt
-   sphinx-build -b html -D language=en ./source ./build/html/humble/en
+   sphinx-build -b html -D language=en ./source ./build/html/%(%(VERSION_NAME)s)s/en
 
-To see the result, open the file `build/html/humble/en/index.html` in your browser.
+To see the result, open the file `build/html/%(%(VERSION_NAME)s)s/en/index.html` in your browser.
 
 .. code-block:: bash
 
    # To see the result, open the file
-   firefox build/html/humble/en/index.html
+   firefox build/html/%(%(VERSION_NAME)s)s/en/index.html
 
 =================================
 First time for translation setup
@@ -62,5 +62,5 @@ Then you can build the html files with the following command corresponding to th
 .. code-block:: bash
    
     # Build html files for the language en in html/en
-    sphinx-build -b html -D language=fr ./source ./build/html/humble/fr
-    sphinx-build -b html -D language=en ./source ./build/html/humble/en
+    sphinx-build -b html -D language=fr ./source ./build/html/%(%(VERSION_NAME)s)s/fr
+    sphinx-build -b html -D language=en ./source ./build/html/%(%(VERSION_NAME)s)s/en

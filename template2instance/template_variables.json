@@ -8,6 +8,14 @@
             "access": "user input"
         },
         {
+            "name": "VERSION_NAME",
+            "type": "string",
+            "description": "Name of the version, if not provided, it will be set to 'main'. The version number from the semantic versioning is also often used here.",
+            "value_example": "main",
+            "default": "main",
+            "access": "user input"
+        },
+        {
             "name": "PROJECT_TITLE_EN",
             "type": "string",
             "description": "Title of the documentation",
