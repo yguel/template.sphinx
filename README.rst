@@ -4,7 +4,7 @@ Quick setup
 
 .. code-block:: bash
 
-   cd sphinx && chmod +x start_build.sh && ./start_build.sh && firefox build/html/%(VERSION_NAME)s/en/index.html
+   cd sphinx && chmod +x start_build.sh && ./start_build.sphinx && find build/ -iname index.html | xargs firefox
 
 ==============
 Setup details
