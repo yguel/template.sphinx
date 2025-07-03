@@ -97,22 +97,22 @@ from pathlib import Path
 import shutil
 
 html_context = {
-  'current_version' : "%(VERSION_NAME)s",
+  'current_version' : None,
   'current_language' : None,
   'current_language_code' : None,
   'versions' : [
-      ["%(VERSION_NAME)s", None], 
+      ["%(VERSION_NAME)s", None],
       #["jazzy", None]
     ],
   'languages': [
-      ["en", "en"], 
+      ["en", "en"],
       ["fr", "fr"]
     ],
   'project_names' :  {
       "en": "%(PROJECT_TITLE_EN)s",
     },
   'logo_path' : {
-      "en": "locales/en/logo.en.svg",
+      "en": "locales/en/logo.svg",
     }
 }
 
@@ -132,13 +132,13 @@ language_map = {
         "exercise_title_text" : "Exercice",
         "solution_title_text" : "Solution de",
         "togglebutton_hint" : "Cliquer pour afficher",
-        "togglebutton_hint_hide" : ""    
+        "togglebutton_hint_hide" : ""
     }
 }
 
 base_uri = None
 config_params = None
-version = "%(VERSION_NAME)s"
+version = "%(VERSION_NAME)s" # Set the default version to build the documentation for.
 
 def on_builder_inited(app):
     global base_uri
@@ -157,7 +157,7 @@ def on_config_inited(app, config):
     global togglebutton_hint_hide
     global exercise_title_text
     global solution_title_text
-    
+
     # global project
     print(f"Language set to: {config.language}")
     if "" != config.html_baseurl:
@@ -165,10 +165,14 @@ def on_config_inited(app, config):
         print(f"Base URL set to: {base_uri}")
     else:
         print(f"Base URL not set")
-        
+
     # Set the current version
-    if config.version is not None:
+    if config.version is not None and config.version != "":
         version = config.version
+        config.html_context['current_version'] = version
+    if version is None or version == "":
+        raise ValueError("Version is not set. Please set the VERSION_NAME in pkg_generation_config.json.")
+    config.html_context['current_version'] = version
     print(f"Version set to: {version}")
 
     # Also store the current language that Sphinx is building:
@@ -176,10 +180,10 @@ def on_config_inited(app, config):
         lg = LANG_MAP[config.language]
         config.html_context['current_language'] = config.language
         config.html_context['current_language_code'] = lg
-    
+
     # Store the configuration parameters for later use
     config_params = config
-        
+
 def post_process(app, exception):
     global version
     global config_params
@@ -192,7 +196,7 @@ def post_process(app, exception):
             logo_src = Path(os.path.abspath(__file__)).parent / f"{html_logo}"
             logo_dest = Path(os.path.abspath(__file__)).parent.parent / f"build/html/{version}/{LANG_MAP[config.language]}/_static/logo.svg"
             shutil.copy(logo_src, logo_dest, follow_symlinks=True)
-            
+
 def _dump_exercises(app, doctree):
     from sphinx_exercise.nodes import exercise_node, exercise_enumerable_node
     ex1 = doctree.traverse(exercise_node)
@@ -204,8 +208,8 @@ def setup(app):
     app.connect('builder-inited', on_builder_inited)
     app.connect('build-finished', post_process)
     app.connect("doctree-read", _dump_exercises)
-    
-    
+
+
 # -- Style options
 from docutils import nodes
 from docutils.parsers.rst import roles
