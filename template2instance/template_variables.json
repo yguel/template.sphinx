@@ -1,4 +1,8 @@
 {
+    "excluded files and directories": [
+        "template2instance",
+        ".git"
+    ],
     "variables": [
         {
             "name": "PROJECT_NAME",
